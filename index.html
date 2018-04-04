@@ -29,7 +29,7 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background: url('./imgs/flower.JPG') center center no-repeat;
+            background: url('http://img.hb.aicdn.com/4ab95d93991f4ff62034ae3464a046d94d0d8a75fff0-QbpsAp_fw658') center center no-repeat;
             background-size: 110% 110%;
             text-align: center;
             color: #99ace4;
@@ -55,11 +55,10 @@
             <div class="content">
                 <p>倒计时:</p>
                 </br>
-                <p>{{m}}个月{{d}}天</p>
-                <p>{{h}}:{{min}}:{{s}}</p>
+                <p style="margin-bottom:5px">{{m}}个月{{d}}天</p>
+                <p>{{h}}:{{min|addZero}}:{{s|addZero}}</p>
                 </br>
             </div>
-
         </div>
 </body>
 <script>
@@ -82,13 +81,16 @@
                 this.h = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000) - this.d * (3600 * 24 * 1000)) / (3600 * 1000));
                 this.min = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000) - this.d * (3600 * 24 * 1000) - this.h * (3600 * 1000)) / (60 * 1000));
                 this.s = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000) - this.d * (3600 * 24 * 1000) - this.h * (3600 * 1000) - this.min * (60 * 1000)) / 1000);
-                // console.log(this.m);
             },
         },
-        computed: {
-            formTime() {
-
-                return m
+        filters: {
+            addZero(num) {
+                // return num < 10 ? '0' + num : num;
+                if (num < 10) {
+                    return '0' + num;
+                } else {
+                    return num;
+                }
             }
         },
         mounted() {
