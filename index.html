@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们在一起</title>
+    <script src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 200px;
+            height: 200px;
+            /* line-height: 200px; */
+            border-radius: 50%;
+            background: linear-gradient(#79E4FF ,#66A7FF);
+            text-align: center;
+            color: #fff;
+        }
+        .box .content{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <div class="box">
+            <div class="content">
+                <p>距离开始：</p>
+                </br>
+                <p>{{m}}个月{{d}}天</p>
+                <p>{{h}}:{{min}}:{{s}}</p>
+            </br>
+        </div>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#demo',
+        data: {
+            show: 0,
+            date: '',
+            m: '',
+            d: '',
+            h: '',
+            min: '',
+            s: '',
+        },
+        methods: {
+            getTime() {
+                this.date = new Date(2018,8,15,11,08,0,0)-new Date();
+                this.m = Math.floor(this.date/(3600*24*30*1000));
+                this.d = Math.floor((this.date-this.m*(3600*24*30*1000)-(3600*24*3*1000))/(3600*24*1000));
+                this.h = Math.floor((this.date-this.m*(3600*24*30*1000)-(3600*24*3*1000)-this.d*(3600*24*1000))/(3600*1000));
+                this.min = Math.floor((this.date-this.m*(3600*24*30*1000)-(3600*24*3*1000)-this.d*(3600*24*1000)-this.h*(3600*1000))/(60*1000));
+                this.s = Math.floor((this.date-this.m*(3600*24*30*1000)-(3600*24*3*1000)-this.d*(3600*24*1000)-this.h*(3600*1000)-this.min*(60*1000))/1000);
+                // console.log(this.m);
+            },
+        },
+        computed: {
+            formTime(){
+
+                return m
+            }
+        },
+        mounted(){
+            this.getTime();
+            this.timer=setInterval(()=>{
+                this.getTime();
+            },1000);
+        }
+    })
+</script>
+
+</html>
