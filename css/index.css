@@ -1,0 +1,93 @@
+ * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: #FFF6E4;
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: url('../imgs/flower.JPG') center center no-repeat;
+            background-size: 110% 110%;
+            text-align: center;
+            color: #99ace4;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-weight: 700;
+            user-select: none;
+            transition: all .5s;
+        }
+
+        .box .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .logo {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 160px;
+            height: 90px;
+            background: url('../imgs/logo.png');
+            background-size: 100% 100%;
+            margin-right: 10px;
+        }
+
+        .slide {
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            margin-left: -45px;
+            width: 90px;
+            height: 52px;
+            z-index: 30;
+            animation: slideMove 1.5s linear 0s infinite;
+            -webkit-animation: slideMove 1.5s linear 0s infinite
+        }
+
+        @-webkit-keyframes slideMove {
+            0% {
+                transform: translateY(60px);
+                opacity: 0
+            }
+            50% {
+                transform: translateY(30px);
+                opacity: .8
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0
+            }
+        }
+
+        @keyframes slideMove {
+            0% {
+                transform: translateY(60px);
+                opacity: 0
+            }
+            50% {
+                transform: translateY(30px);
+                opacity: .8
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0
+            }
+        }

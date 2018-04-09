@@ -8,58 +8,8 @@
     <link rel="Bookmark" href="./imgs/favicon.png">
     <link rel="apple-touch-icon" href="./imgs/momo.png">
     <title>我们结婚啦</title>
+    <link rel="stylesheet" href="./css/index.css">
     <script src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        #demo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: #FFF6E4;
-        }
-
-        .box {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: url('./imgs/flower.JPG') center center no-repeat;
-            background-size: 110% 110%;
-            text-align: center;
-            color: #99ace4;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 18px;
-            font-weight: 700;
-            user-select: none;
-            transition: all .5s;
-        }
-
-        .box .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .logo {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 160px;
-            height: 90px;
-            background: url('./imgs/logoS.png');
-            margin-right: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -75,45 +25,6 @@
         </div>
         <div class="logo"></div>
 </body>
-<script>
-    new Vue({
-        el: '#demo',
-        data: {
-            show: 0,
-            date: '',
-            m: '',
-            d: '',
-            h: '',
-            min: '',
-            s: '',
-        },
-        methods: {
-            getTime() {
-                this.date = new Date(2018, 8, 15, 11, 08, 0, 0) - new Date();
-                this.m = Math.floor(this.date / (3600 * 24 * 30 * 1000));
-                this.d = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000)) / (3600 * 24 * 1000));
-                this.h = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000) - this.d * (3600 * 24 * 1000)) / (3600 * 1000));
-                this.min = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000) - this.d * (3600 * 24 * 1000) - this.h * (3600 * 1000)) / (60 * 1000));
-                this.s = Math.floor((this.date - this.m * (3600 * 24 * 30 * 1000) - (3600 * 24 * 3 * 1000) - this.d * (3600 * 24 * 1000) - this.h * (3600 * 1000) - this.min * (60 * 1000)) / 1000);
-            },
-        },
-        filters: {
-            addZero(num) {
-                // return num < 10 ? '0' + num : num;
-                if (num < 10) {
-                    return '0' + num;
-                } else {
-                    return num;
-                }
-            }
-        },
-        mounted() {
-            this.getTime();
-            this.timer = setInterval(() => {
-                this.getTime();
-            }, 1000);
-        }
-    })
-</script>
+<script src="./js/index.js"></script>
 
 </html>
